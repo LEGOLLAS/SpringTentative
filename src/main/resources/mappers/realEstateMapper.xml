@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  <mapper namespace="com.gurwl.test.mybatis.repository.RealEstateRepository">
+  		<select id="selectRealEstate" parameterType="int" resultType="com.gurwl.test.mybatis.domain.RealEstate">
+  			select 
+  				`id`,
+				`realtorId`,
+				`address`,
+				`area`,
+				`type`,
+				`price`,
+				`rentPrice`,
+				`createdAt`,
+				`updatedAt`
+			from 
+				`real_estate`
+			where
+				`id` = #{id}
+  		</select>
+  		
+  		
+  		<select id="selectRealEstateByPrice" parameterType="int" resultType="com.gurwl.test.mybatis.domain.RealEstate">
+  			select 
+  				`id`,
+				`realtorId`,
+				`address`,
+				`area`,
+				`type`,
+				`price`,
+				`rentPrice`,
+				`createdAt`,
+				`updatedAt`
+			from 
+				`real_estate`
+			where
+				<![CDATA[`rentPrice` < #{rent} ]]> 
+  			
+  		</select>
+  		
+  		<!-- 타입이 여러개인 경우 map으로 지정 -->
+  		<select id="selectRealEstateByAreaPrice" parameterType="map" resultType="com.gurwl.test.mybatis.domain.RealEstate">
+  			select 
+  				`id`,
+				`realtorId`,
+				`address`,
+				`area`,
+				`type`,
+				`price`,
+				`rentPrice`,
+				`createdAt`,
+				`updatedAt`
+			from 
+				`real_estate`
+			where
+				<![CDATA[`area` > #{area} ]]> 
+				and
+				<![CDATA[`price` < #{price} ]]> 
+  		</select>
+  		
+  		
+  		<insert id="insertRealEstate" parameterType="com.gurwl.test.mybatis.domain.RealEstate">
+  			insert into `real_estate`
+  			(
+  				`realtorId`,
+				`address`,
+				`area`,
+				`type`,
+				`price`
+  				
+  			)
+  			value (
+  				#{realtorId},
+  				#{address},
+  				#{area},
+  				#{type},
+  				#{price}
+  			)
+  		</insert>
+  		
+  		<insert id="insertRealEstateByObject" parameterType="map">
+  			insert into `real_estate`
+  			(
+  				`address`,
+				`area`,
+				`type`,
+				`price`,
+				`rentPrice`
+  				
+  			)
+  			value (
+  				#{address},
+  				#{area},
+  				#{type},
+  				#{price},
+  				#{rentPrice}
+  			)
+  		</insert>
+  </mapper>
