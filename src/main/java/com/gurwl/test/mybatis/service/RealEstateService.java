@@ -45,4 +45,12 @@ public class RealEstateService {
 	public int insertRealEstateByObject(String address, int area, String type, int price, int rentPrice) {
 		return realEstateRepository.insertRealEstateByObject(address, area, type, price, rentPrice);
 	}
+	
+	public int updateRealEstate(int id, String type, int price) {
+		return realEstateRepository.updateRealEstate(id, type, price);
+	}
+	
+	public int deleteRealEstate(int id) {
+		return realEstateRepository.deleteRealEstate(id);
+	}
 }
