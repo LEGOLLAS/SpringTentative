@@ -12,9 +12,9 @@
 	<form method="post" action="/lesson04/test01/add_seller">
 		<h4>닉네임</h4>
 		<input type="text" name="name">
-		<h4>닉네임</h4>
-		<input type="text" name="img_url">
-		<h4>닉네임</h4>
+		<h4>이미지 주소</h4>
+		<input type="text" name="imgUrl">
+		<h4>온도</h4>
 		<input type="text" name="temperature"><br>
 		<button type="submit">버튼</button>
 	</form>

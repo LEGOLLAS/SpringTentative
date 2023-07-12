@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gurwl.test.jsp.repository.SellerRepository">
+  	<insert id="addSeller" parameterType="map">
+  			insert into `seller`
+  			(
+				`nickname`,
+				`profileImage`,
+				`temperature`
+  			)
+  			value (
+  				#{name},
+  				#{imgUrl},
+  				#{temperature}
+  			)
+  		</insert>
+  		
+  		<select id="selectSellerLast" parameterType="int" resultType="com.gurwl.test.jsp.domain.Seller">
+  			select 
+  				`id`,
+  				`nickname`,
+				`profileImage`,
+				`temperature`,
+				`createdAt`,
+				`updatedAt`
+			from 
+				`seller`
+			where
+				`id` = #{id}
+			order by 
+				`id` desc
+			limit 
+				1
+  		</select>
+  		
+  		<select id="selectSeller" resultType="com.gurwl.test.jsp.domain.Seller">
+  			select 
+  				`id`,
+  				`nickname`,
+				`profileImage`,
+				`temperature`,
+				`createdAt`,
+				`updatedAt`
+			from 
+				`seller`
+			order by 
+				`id` desc
+			limit 
+				1
+  		</select>
+  </mapper>
