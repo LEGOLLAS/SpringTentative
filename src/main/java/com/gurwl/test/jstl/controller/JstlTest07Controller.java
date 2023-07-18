@@ -45,6 +45,6 @@ public class JstlTest07Controller {
 			) throws ParseException {
 		
 		jstlTest07Service.insertWeather(date, weather, microDust, temperature, precipitation, windSpeed);
-		return "redirect:jstl/test07";
+		return "redirect:test07";
 	}
 }

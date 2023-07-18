@@ -30,7 +30,7 @@
 				`temperature`,
 				`precipitation`,
 				`microDust`,
-				`windSpeed`,
+				`windSpeed`
   			)
   			value (
   				#{date},

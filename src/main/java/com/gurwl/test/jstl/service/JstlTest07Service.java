@@ -32,7 +32,7 @@ public class JstlTest07Service {
 			double windSpeed
 			) throws ParseException {
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Date convertDate = dateFormat.parse(date);
 		

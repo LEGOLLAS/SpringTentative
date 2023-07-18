@@ -47,7 +47,7 @@
 						<div class="input-group-append">
 							<span class="input-group-text">mm</span>
 						</div>
-						<label>풍속</label><input class="form-control w-25" type="text" name="windspeed">
+						<label>풍속</label><input class="form-control w-25" type="text" name="windSpeed">
 						<div class="input-group-append">
 							<span class="input-group-text" id="basic-addon2">km/h</span>
 						</div>
