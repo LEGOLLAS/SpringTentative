@@ -27,48 +27,34 @@
 				</nav>
 			</div>
 			<section class="col-7">
-				<h1>과거 날씨</h1>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>날짜</th>
-							<th>날씨</th>
-							<th>기온</th>
-							<th>강수량</th>
-							<th>미세먼지</th>
-							<th>풍속</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="weather" items="${weatherList}" >
-						<tr>
-							<td>
-							<fmt:formatDate value="${weather.date }" pattern="yyyy년 M월 d일"/></td>
-							<td>
-								<c:choose>
-									<c:when test="${weather.weather eq '맑음' }">
-										<img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"/>
-									</c:when>
-									<c:when test="${weather.weather eq '구름조금' }">
-										<img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"/>
-									</c:when>
-									<c:when test="${weather.weather eq '흐림' }">
-										<img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"/>
-									</c:when>
-									<c:otherwise>
-										<img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"/>
-									</c:otherwise>
-								</c:choose>
-							
-							</td>
-							<td>${weather.temperature }</td>
-							<td>${weather.precipitation }</td>
-							<td>${weather.microDust }</td>
-							<td>${weather.windSpeed }</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				<h1>날씨 입력</h1>
+				<form method="post" action="/jstl/test07_insert">
+					<div class="d-flex">
+						<label>날짜</label><input class="form-control w-25" type="text" name="date">
+						<label>날씨</label><input class="form-control w-25" type="text" name="weather">
+						<label>미세먼지</label>
+						<select class="form-control w-25" name="microDust">
+							<option value="좋음">좋음</option>
+							<option value="나쁨">나쁨</option>
+						</select>
+					</div>
+					<div class="d-flex">
+						<label>기온</label><input class="form-control w-25" type="text" name="temperature">
+						<div class="input-group-append">
+							<span class="input-group-text" id="basic-addon2">'c</span>
+						</div>
+						<label>강수량</label><input class="form-control w-25" type="text" name="precipitation">
+						<div class="input-group-append">
+							<span class="input-group-text">mm</span>
+						</div>
+						<label>풍속</label><input class="form-control w-25" type="text" name="windspeed">
+						<div class="input-group-append">
+							<span class="input-group-text" id="basic-addon2">km/h</span>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">저장</button>
+				</form>
+				
 			</section>
 		</div>
 		<footer class="d-flex w-100">
