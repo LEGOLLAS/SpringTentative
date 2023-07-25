@@ -1,5 +1,8 @@
 package com.gurwl.test.pension.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +27,22 @@ public class PensionController {
 	
 	@PostMapping("/pension/search/booking")
 	@ResponseBody
-	public Booking searchBooking(
+	public Map<String, Object> searchBooking(
 			@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber,
 			Model model
 	) {
 		Booking booking = pensionSerivce.searchBooking(name, phoneNumber);
 		
-		model.addAttribute("booking", booking);
-
-		return booking;
+		Map<String, Object> result = new HashMap<>();
+		if(booking == null) {
+			//조회 실패
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+			result.put("info", booking);
+		}
+		
+		return result;
 	}
 }

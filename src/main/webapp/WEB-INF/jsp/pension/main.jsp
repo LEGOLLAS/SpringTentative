@@ -106,16 +106,22 @@
                    		'phoneNumber' : phoneNumber
                    		},
                    	success: function(data){
-                   		alert(
-                   				"이름 : " + data.name + "\n"
-                   			+	"날짜 : " + data.date + "\n"
-                   			+	"일수 : " + data.day + "\n"
-                   			+	"인원 : " + data.headcount + "\n"
-                   			+	"상태 : " + data.state + "\n"
-                   			);
+                   		console.log(data.result);
+                   		if(data.result == 'success'){
+                   			alert(
+                       				"이름 : " + data.info.name + "\n"
+                       			+	"날짜 : " + data.info.date.substring(0, 10) + "\n"
+                       			+	"일수 : " + data.info.day + "\n"
+                       			+	"인원 : " + data.info.headcount + "\n"
+                       			+	"상태 : " + data.info.state + "\n"
+                       			);
+                   		}else{
+                   			alert("조회 결과가 없습니다.");
+                   		}
+                   		
                    	},
                 	error : function (e){
-                		alert("조회 실패");
+                		alert("에러 실패");
                 	}
                 });
             });
